@@ -1,2 +1,32 @@
-<!DOCTYPE HTML>
-<script src="//cdn.rawgit.com/jpillora/xdomain/0.7.4/dist/xdomain.min.js" master="*"></script>
+<!DOCTYPE html>
+<html>
+<head><title></title></head>
+<body>
+<script>
+  function sendToPrinter(ip_addr, zpl) {
+      var request = new XMLHttpRequest();
+
+      request.onload = function() {
+        request.onload = request.onerror = null;
+      };
+
+      request.onerror = function() {
+        request.onload = request.onerror = null;
+      };
+
+      request.open('POST', "http://" + ip_addr + "/pstprnt", true);
+      request.setRequestHeader('Content-Length', zpl.length);
+      request.send(zpl);
+  }
+  //sendToPrinter('192.168.10.178', ${JSON.stringify(zpl)});
+  try {
+    var config = JSON.parse(window.location.search);
+    console.log(config);
+  } catch(e) {
+    console.log(e);
+  }
+  
+</script>
+<button onclick="print()">Print</button>
+</body>
+</html>
