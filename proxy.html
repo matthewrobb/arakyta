@@ -8,10 +8,12 @@
 
       request.onload = function() {
         request.onload = request.onerror = null;
+        self.close();
       };
 
       request.onerror = function() {
         request.onload = request.onerror = null;
+        self.close();
       };
 
       request.open('POST', "http://" + ip_addr + "/pstprnt", true);
