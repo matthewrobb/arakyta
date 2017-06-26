@@ -20,7 +20,7 @@
   }
   //sendToPrinter('192.168.10.178', ${JSON.stringify(zpl)});
   try {
-    var config = JSON.parse(decodeURIComponent(window.location.search));
+    var config = JSON.parse(decodeURIComponent(window.location.search.replace(/^\?/, '')));
     console.log(config);
   } catch(e) {
     console.log(e);
